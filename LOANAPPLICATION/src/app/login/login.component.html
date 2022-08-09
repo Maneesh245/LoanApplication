@@ -1,0 +1,41 @@
+<section class="vh-100">
+    <div class="container py-5 h-100">
+      <div class="row d-flex align-items-center justify-content-center h-100">
+        <div class="col-md-8 col-lg-7 col-xl-6">
+          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+            class="img-fluid" alt="Phone image">
+        </div>
+     
+        <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+          <form [formGroup]="LoginDetails" (ngSubmit)="Login()">
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+              <input type="text" id="form3Example3" class="form-control form-control-lg"
+              placeholder="Enter a valid UserName " formControlName="username" 
+              [ngClass]="(LoginDetails.get('username')?.touched ||LoginDetails.get('username')?.dirty) && LoginDetails.get('username')?.errors ? 'is-invalid' :'valid' "
+              >   <label class="form-label invalid-feedback" for="form3Example3">username is required.</label>
+
+           
+            </div>
+
+            <div class="form-outline mb-4">
+              <input type="Password" id="form3Example3" class="form-control form-control-lg"
+                placeholder="Enter a valid Password " formControlName="Password" 
+                [ngClass]="(LoginDetails.get('Password')?.touched ||LoginDetails.get('Password')?.dirty) && LoginDetails.get('Password')?.errors ? 'is-invalid' :'valid' "
+                >
+              <label class="form-label" for="form3Example4" class="invalid-feedback">Password is required.</label>
+
+            </div>
+            <div *ngIf="showError" class="alert alert-danger form-outline mb-4" >
+              {{errorMessage}}
+          </div>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
+  
+  
+      
+  
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
