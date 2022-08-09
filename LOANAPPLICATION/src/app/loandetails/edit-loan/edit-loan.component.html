@@ -1,0 +1,95 @@
+<div class="container">
+    <h6>Update Loan</h6>
+
+   
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <div class="form-group">
+                    <label for="title">First Name:</label>
+                    <input formControlName="firstname" id="title" type="text" class="form-control" [(ngModel)]="loandetail.firstname">
+                    <div *ngIf="f['firstname'].touched && f['firstname'].invalid" class="alert alert-danger">
+                        <div *ngIf="f['firstname'].errors && f['firstname'].errors['required']">First name is required.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <div class="form-group">
+                    <label for="title">Last Name</label>
+                    <input formControlName="lastname" id="title" type="text" class="form-control" [(ngModel)]="loandetail.lastname">
+                    <div *ngIf="f['lastname'].touched && f['lastname'].invalid" class="alert alert-danger">
+                        <div *ngIf="f['lastname'].errors && f['lastname'].errors['required']">Last name is required.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="title">Loan Amount</label>
+            <input formControlName="loanamount" id="title" type="number" pattern="\d*" class="form-control" [(ngModel)]="loandetail.loanamount">
+            <div *ngIf="f['loanamount'].touched && f['loanamount'].invalid" class="alert alert-danger">
+                <div *ngIf="f['loanamount'].errors && f['loanamount'].errors['required']">Loan Amount name is required.
+                </div>
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="title">Loan Term</label>
+            <input formControlName="loanterm" id="title" type="number" pattern="\d*" class="form-control" [(ngModel)]="loandetail.loanterm">
+            <div *ngIf="f['loanterm'].touched && f['loanterm'].invalid" class="alert alert-danger">
+                <div *ngIf="f['loanterm'].errors && f['loanterm'].errors['loanterm']">Loan term is required.</div>
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label for="title">Loan
+                Type
+            </label>
+            <br />
+            <div class="btn-group" role="group">
+
+                <label>
+                    <input type="radio" formControlName="loantype" value="Secured" [(ngModel)]="loandetail.loantype">
+                    Secured
+                </label>
+                <br />
+                <label>
+                    <input type="radio" formControlName="loantype" value="Unsecured" [(ngModel)]="loandetail.loantype">
+                    Unsecured
+                </label>
+
+            </div>
+        </div>
+
+
+        <div *ngIf="f['loantype'].touched && f['loantype'].invalid" class="alert alert-danger">
+            <div *ngIf="f['loantype'].errors && f['loantype'].errors['required']">Loan Amount name is required.</div>
+        </div>
+
+
+        <div class="form-group col-md-6">
+            <label for="Property">Property Address</label>
+            <textarea formControlName="Property" type="text" class="form-control" [(ngModel)]="loandetail.Property">
+             </textarea>
+            <div *ngIf="f['Property'].touched && f['Property'].invalid" class="alert alert-danger">
+                <div *ngIf="f['Property'].errors && f['Property'].errors['required']">Property Address is required.
+                </div>
+            </div>
+        </div>
+        <br>
+  <div class="row">
+    <div class="col">
+        <!-- <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button> -->
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Update</button> 
+    </div>
+    <div class="col">
+        <!-- <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button> -->
+        <a href="#" routerLink="/post/index" class="btn btn-primary">Back</a>
+    </div>
+    <div class="col"></div>
+    </div>
+
+ </form>
+    
+</div>

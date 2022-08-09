@@ -53,10 +53,11 @@ export class LoginComponent implements OnInit {
              if(res.isAuthSuccessful)
              {
              localStorage.setItem("Role", res.Role);
-             this.router.navigateByUrl('');
+             this.router.navigate(['/', 'loanDetails']);
              }
              else
              {
+              alert(res.errorMessage)
                 this.errorMessage =res.errorMessage;
                 this.showError = true;
              }
@@ -65,6 +66,7 @@ export class LoginComponent implements OnInit {
           error: (err: HttpErrorResponse) => {
             this.errorMessage = err.message;
             this.showError = true;
+         
           }})
         }
 }

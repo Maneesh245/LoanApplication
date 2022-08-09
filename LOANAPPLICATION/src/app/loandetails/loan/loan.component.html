@@ -1,0 +1,114 @@
+<div class="container">
+    <h6>New Loan</h6>
+
+         
+    <form [formGroup]="form" (ngSubmit)="submit()">
+
+        <div class="form-group col-md-6">
+            <label for="title">First Name:</label>
+            <input
+                formControlName="firstname"
+                id="firstname"
+                type="text"
+              
+                class="form-control">
+            <div *ngIf="f['firstname'].touched && f['firstname'].invalid" class="alert alert-danger">
+                <div *ngIf="f['firstname'].errors && f['firstname'].errors['required']">First Name is required.</div>
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="title">Last Name:</label>
+            <input
+                formControlName="lastname"
+                id="lastname"
+                type="text"
+              
+                class="form-control">
+            <div *ngIf="f['lastname'].touched && f['lastname'].invalid" class="alert alert-danger">
+                <div *ngIf="f['lastname'].errors && f['lastname'].errors['required']">Last Name is required.</div>
+            </div>
+        </div>
+      
+        <div class="form-group col-md-6">
+            <label for="title">Loan Amount:</label>
+            <input
+                formControlName="loanamount"
+                id="loanamount"
+                type="number"
+              
+                class="form-control">
+            <div *ngIf="f['loanamount'].touched && f['loanamount'].invalid" class="alert alert-danger">
+                <div *ngIf="f['loanamount'].errors && f['loanamount'].errors['required']">Loan Amount is required.</div>
+            </div>
+        </div>
+        <div  class="form-group col-md-6">
+            <label for="title">Loan Term</label>
+            <input
+            formControlName="loanterm"
+                id="loanterm"
+                type="number"
+                class="form-control">
+                <div *ngIf="f['loanterm'].touched && f['loanterm'].invalid" class="alert alert-danger">
+                    <div *ngIf="f['loanterm'].errors && f['loanterm'].errors['required']">Loan term  is required.</div>
+                </div>
+              
+        </div>
+        
+        <div class="form-group col-md-6">
+            <label for="Type">Loan 
+                type
+                </label>
+                <br/>
+                <div class="btn-group" role="group">
+                 
+                    <label>
+                    <input type="radio"  formControlName="loantype" value="Secured">
+                    Secured
+                </label>
+                <br/>
+                     <label>
+                        <input type="radio"   formControlName="loantype" value="Unsecured">
+                        Unsecured
+                    </label>
+                    
+                  </div>
+                  <div *ngIf="f['loantype'].touched && f['loantype'].invalid" class="alert alert-danger">
+                    <div *ngIf="f['loantype'].errors && f['loantype'].errors['required']">Loan Type name is required.</div>
+                </div>
+                </div>
+          
+              
+   
+   
+   
+        <div class="form-group col-md-6">
+            <label for="Property">Property Address</label>
+            <textarea
+            formControlName="Property"
+           
+            type="text"
+            class="form-control">
+        </textarea>
+            <div *ngIf="f['Property'].touched && f['Property'].invalid" class="alert alert-danger">
+                <div *ngIf="f['Property'].errors && f['Property'].errors['required']">Property Address is required.</div>
+            </div>
+        </div>
+       
+        <!-- <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button> -->
+        <br>
+        <div class="row">
+          <div class="col">
+               <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button> 
+             
+          </div>
+          <div class="col">
+             
+              <a href="#" routerLink="/post/index" class="btn btn-primary">Back</a>
+          </div>
+          <div class="col"></div>
+          </div>
+        
+    
+      </form>
+    </div>
+
