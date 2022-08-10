@@ -5,6 +5,7 @@ import { catchError, map } from 'rxjs/operators';
 import { User } from '../model/user';
 import { environment } from 'src/environments/environment';
 import { AuthResponseDto } from '../model/AuthResponseDto';
+import { Router } from '@angular/router';
 
 
 
@@ -17,7 +18,7 @@ export class AuthenticationService {
     })
   }
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient,private router: Router) {
  
     }
 
@@ -34,7 +35,8 @@ export class AuthenticationService {
 
     logout() {
         // remove user from local storage to log user out
-        localStorage.removeItem('currentUser');
+        localStorage.removeItem('Role');
+        this.router.navigate(['/', 'Login']);
      
     }
     private handleError(error: HttpErrorResponse) {

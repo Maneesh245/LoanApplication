@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { loandetail } from 'src/app/model/loandetail';
+import { AuthenticationService } from 'src/app/service/authentication.service';
 import { LoanService } from 'src/app/service/loan.service';
 
 
@@ -17,7 +18,7 @@ export class LoandashboardComponent implements OnInit {
   loandetails:loandetail[]=[];
   loandata:loandetail[]=[];
 
-  constructor(private fb:FormBuilder,public loanService: LoanService,private route: Router) {
+  constructor(private fb:FormBuilder,public loanService: LoanService,private route: Router,private authenticationService: AuthenticationService) {
     this.role= (localStorage.getItem("Role")!.toString());
          this.SearchDetail = this.fb.group({
       FirstName: [null,Validators.required ],
@@ -36,6 +37,7 @@ export class LoandashboardComponent implements OnInit {
     this.getalldata();
    
   }
+  
    getalldata()
    {
     this.loanService.getAll().subscribe((data: loandetail[])=>{
@@ -60,7 +62,6 @@ export class LoandashboardComponent implements OnInit {
   }
   SearchDetails()
   {
-    alert(this.SearchDetail.get('FirstName')!.value);
     this.loandata = this.loandetails.filter(item => (item.firstname == (this.SearchDetail.get('FirstName')!.value))|| (item.lastname == (this.SearchDetail.get('LastName')!.value))||(item.id == (this.SearchDetail.get('LoanNumber')!.value)));
     //this.posts = data;
       console.log(this.loandetails);
@@ -68,7 +69,7 @@ export class LoandashboardComponent implements OnInit {
   Logout()
   {
     alert();
-    localStorage.clear();
-    this.route.navigate(['/', 'Login']); 
+   this.authenticationService.logout();
   }
+ 
 }
