@@ -35,8 +35,11 @@ export class EditLoanComponent implements OnInit {
    * @return response()
    */
   ngOnInit(): void {
-    this.id = this.route.snapshot.params['postId'];
-    
+    this.id = this.route.snapshot.params['Id'];
+    this.loanService.find(this.id).subscribe((data: loandetail)=>{
+      this.loandetail = data;
+      console.log(data);
+    }); 
        
     this.form = new FormGroup({
       firstname: new FormControl(null, [Validators.required]),
@@ -44,7 +47,7 @@ export class EditLoanComponent implements OnInit {
       loanamount: new FormControl(null, [Validators.required]),
       loantype: new FormControl(null, Validators.required),
       loanterm: new FormControl(null, Validators.required),
-      Property: new FormControl(null, Validators.required)
+      property: new FormControl(null, Validators.required)
       
     });
   }
@@ -67,7 +70,7 @@ export class EditLoanComponent implements OnInit {
     console.log(this.form.value);
     this.loanService.update(this.id, this.form.value).subscribe((res:any) => {
          console.log('Post updated successfully!');
-         this.router.navigateByUrl('post/index');
+         this.router.navigateByUrl('loanDetails');
     })
   }
     

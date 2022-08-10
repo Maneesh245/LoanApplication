@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { LoanService } from 'src/app/service/loan.service';
 
 @Component({
   selector: 'app-loan',
@@ -11,7 +13,7 @@ export class LoanComponent implements OnInit {
   get f(){
     return this.form.controls;
   }
-  constructor() { }
+  constructor(private loanService: LoanService,private router: Router) { }
 
   ngOnInit(): void {
    
@@ -21,14 +23,17 @@ export class LoanComponent implements OnInit {
       loanamount: new FormControl('', [Validators.required]),
       loantype: new FormControl('', Validators.required),
       loanterm: new FormControl('', Validators.required),
-      Property: new FormControl('', Validators.required)
+      property: new FormControl('', Validators.required)
       
     });
     
   }
   submit(){
     console.log(this.form.value);
-    
+    this.loanService.create(this.form.value).subscribe((res:any) => {
+         console.log('Post created successfully!');
+         this.router.navigateByUrl('loanDetails');
+    })
   }
 }
 

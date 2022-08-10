@@ -56,15 +56,15 @@
         <th>Property Address</th>
         <th width="220px">Action</th>
       </tr>
-      <tr *ngFor="let post of loandetails">
-        <td>{{ post.id }}</td>
-         <td>{{ post.firstname }}</td> 
-        <td>{{ post.loanamount }}</td> 
-        <td>{{ post.Property }}</td> 
+      <tr *ngFor="let loan of loandata">
+        <td>{{ loan.id }}</td>
+         <td>{{ loan.firstname }}</td> 
+        <td>{{ loan.loanamount }}</td> 
+        <td>{{ loan.property }}</td> 
         <td>
-          <div *ngIf="role === 'Admin'">
-          <a href="#" [routerLink]="['/edit-loan/', post.id, 'EditLoan']" class="btn btn-primary">Edit</a>
-          <button type="button" (click)="deletePost(post.id)" class="btn btn-danger">Delete</button>
+          <div *ngIf="role === 'admin'">
+          <a href="#" [routerLink]="['/edit-loan/', loan.id, 'EditLoan']" class="btn btn-primary">Edit</a>
+          <button type="button" (click)="deletePost(loan.id)" class="btn btn-danger">Delete</button>
         </div>
         </td>
       </tr>

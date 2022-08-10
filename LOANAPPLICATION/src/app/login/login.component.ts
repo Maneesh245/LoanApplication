@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
             next: (res:AuthResponseDto) => {
              if(res.isAuthSuccessful)
              {
-             localStorage.setItem("Role", res.Role);
+             localStorage.setItem("Role", res.role);
              this.router.navigate(['/', 'loanDetails']);
              }
              else

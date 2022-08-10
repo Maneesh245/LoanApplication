@@ -4,13 +4,14 @@ import { EditLoanComponent } from './loandetails/edit-loan/edit-loan.component';
 import { LoanComponent } from './loandetails/loan/loan.component';
 import { LoandashboardComponent } from './loandetails/loandashboard/loandashboard.component';
 import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './Shared/auth.guard';
 
 const routes: Routes = [
   {path:'',component:LoginComponent, pathMatch: 'full' },
   {path:'Login', component:LoginComponent},
-  {path:'Loan', component:LoanComponent},
-  {path:'loanDetails',component:LoandashboardComponent},
-  { path: 'edit-loan/:Id/EditLoan', component: EditLoanComponent } 
+  {path:'Loan', component:LoanComponent,canActivate:[AuthGuard]},
+  {path:'loanDetails',component:LoandashboardComponent,canActivate:[AuthGuard]},
+  { path: 'edit-loan/:Id/EditLoan', component: EditLoanComponent,canActivate:[AuthGuard] } 
 ];
 
 @NgModule({

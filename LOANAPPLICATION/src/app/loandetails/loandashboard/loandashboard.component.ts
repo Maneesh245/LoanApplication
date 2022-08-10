@@ -14,46 +14,12 @@ export class LoandashboardComponent implements OnInit {
 
   SearchDetail!: FormGroup;
    role!:string;  
-   child ="Parent component";
-  loandetails:loandetail[]=[
-    {
-    id :1,
-    firstname: "Maneesh",
-    lastname: "b",
-    loanamount: 12,
-    loantype: "Secured",
-    loanterm: 1,
-    Property: "qcwe"
-},
-{
-  id :2,
-  firstname: "roshani",
-  lastname: "b",
-  loanamount: 12,
-  loantype: "Secured",
-  loanterm: 1,
-  Property: "qcwe"
-},
-{
-  id :3,
-  firstname: "a",
-  lastname: "b",
-  loanamount: 12,
-  loantype: "Secured",
-  loanterm: 1,
-  Property: "qcwe"
-}
-  ]
-  
-     
-  /*------------------------------------------
-  --------------------------------------------
-  Created constructor
-  --------------------------------------------
-  --------------------------------------------*/
+  loandetails:loandetail[]=[];
+  loandata:loandetail[]=[];
+
   constructor(private fb:FormBuilder,public loanService: LoanService,private route: Router) {
     this.role= (localStorage.getItem("Role")!.toString());
-    this.SearchDetail = this.fb.group({
+         this.SearchDetail = this.fb.group({
       FirstName: [null,Validators.required ],
       LastName: [null,Validators.required],
       LoanNumber: [null,Validators.required]
@@ -66,12 +32,20 @@ export class LoandashboardComponent implements OnInit {
    * @return response()
    */
   ngOnInit(): void {
+ 
+    this.getalldata();
+   
+  }
+   getalldata()
+   {
     this.loanService.getAll().subscribe((data: loandetail[])=>{
       this.loandetails = data;
+      this.loandata=data;
       console.log(this.loandetails);
+      console.log(data);
+
     })  
-  }
-     
+   }  
   /**
    * Write code on Method
    *
@@ -81,12 +55,13 @@ export class LoandashboardComponent implements OnInit {
     this.loanService.delete(id).subscribe(res => {
          this.loandetails = this.loandetails.filter(item => item.id !== id);
          console.log('Post deleted successfully!');
+         this.getalldata();
     })
   }
   SearchDetails()
   {
     alert(this.SearchDetail.get('FirstName')!.value);
-    this.loandetails = this.loandetails.filter(item => (item.firstname == (this.SearchDetail.get('FirstName')!.value))|| (item.lastname == (this.SearchDetail.get('LastName')!.value))||(item.id == (this.SearchDetail.get('LoanNumber')!.value)));
+    this.loandata = this.loandetails.filter(item => (item.firstname == (this.SearchDetail.get('FirstName')!.value))|| (item.lastname == (this.SearchDetail.get('LastName')!.value))||(item.id == (this.SearchDetail.get('LoanNumber')!.value)));
     //this.posts = data;
       console.log(this.loandetails);
   } 

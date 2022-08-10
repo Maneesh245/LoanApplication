@@ -5,5 +5,5 @@ export interface loandetail {
     loantype: string;
     loanamount: number;
     loanterm: number;
-    Property: string;
+    property: string;
     }

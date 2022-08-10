@@ -69,11 +69,11 @@
 
 
         <div class="form-group col-md-6">
-            <label for="Property">Property Address</label>
-            <textarea formControlName="Property" type="text" class="form-control" [(ngModel)]="loandetail.Property">
+            <label for="property">property Address</label>
+            <textarea formControlName="property" type="text" class="form-control" [(ngModel)]="loandetail.property">
              </textarea>
-            <div *ngIf="f['Property'].touched && f['Property'].invalid" class="alert alert-danger">
-                <div *ngIf="f['Property'].errors && f['Property'].errors['required']">Property Address is required.
+            <div *ngIf="f['property'].touched && f['property'].invalid" class="alert alert-danger">
+                <div *ngIf="f['property'].errors && f['property'].errors['required']">property Address is required.
                 </div>
             </div>
         </div>

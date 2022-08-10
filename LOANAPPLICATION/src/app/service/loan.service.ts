@@ -19,35 +19,35 @@ export class LoanService {
   constructor(private httpClient: HttpClient) { }
     
   getAll(): Observable<loandetail[]> {
-    return this.httpClient.get<loandetail[]>(`${environment.apiUrl}/Login/Aurthenticate`)
+    return this.httpClient.get<loandetail[]>(`${environment.apiUrl}/Loan/`)
     .pipe(
       catchError(this.handleError)
     )
   }
     
   create(post:any): Observable<loandetail> {
-    return this.httpClient.post<loandetail>(`${environment.apiUrl} /posts/`, JSON.stringify(post), this.httpOptions)
+    return this.httpClient.post<loandetail>(`${environment.apiUrl}/Loan/`, JSON.stringify(post), this.httpOptions)
     .pipe(
       catchError(this.handleError)
     )
   }  
     
   find(id:number): Observable<loandetail> {
-    return this.httpClient.get<loandetail>(this.apiURL + '/posts/' + id)
+    return this.httpClient.get<loandetail>(`${environment.apiUrl}/Loan/` + id)
     .pipe(
       catchError(this.handleError)
     )
   }
     
   update(id:number, post:any): Observable<loandetail> {
-    return this.httpClient.put<loandetail>(this.apiURL + '/posts/' + id, JSON.stringify(post), this.httpOptions)
+    return this.httpClient.put<loandetail>(`${environment.apiUrl}/Loan/` + id, JSON.stringify(post), this.httpOptions)
     .pipe(
      catchError(this.handleError)
     )
   }
     
   delete(id:number){
-    return this.httpClient.delete<loandetail>(this.apiURL + '/posts/' + id, this.httpOptions)
+    return this.httpClient.delete<loandetail>(`${environment.apiUrl}/Loan/` + id, this.httpOptions)
     .pipe(
       catchError(this.handleError)
     )

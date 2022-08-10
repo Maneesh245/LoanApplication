@@ -82,15 +82,15 @@
    
    
         <div class="form-group col-md-6">
-            <label for="Property">Property Address</label>
+            <label for="property">property Address</label>
             <textarea
-            formControlName="Property"
+            formControlName="property"
            
             type="text"
             class="form-control">
         </textarea>
-            <div *ngIf="f['Property'].touched && f['Property'].invalid" class="alert alert-danger">
-                <div *ngIf="f['Property'].errors && f['Property'].errors['required']">Property Address is required.</div>
+            <div *ngIf="f['property'].touched && f['property'].invalid" class="alert alert-danger">
+                <div *ngIf="f['property'].errors && f['property'].errors['required']">property Address is required.</div>
             </div>
         </div>
        
