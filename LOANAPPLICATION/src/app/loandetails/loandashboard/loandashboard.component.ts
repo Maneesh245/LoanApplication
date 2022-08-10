@@ -19,8 +19,9 @@ export class LoandashboardComponent implements OnInit {
   loandata:loandetail[]=[];
 
   constructor(private fb:FormBuilder,public loanService: LoanService,private route: Router,private authenticationService: AuthenticationService) {
-    this.role= (localStorage.getItem("Role")!.toString());
-         this.SearchDetail = this.fb.group({
+    
+      this.role= (localStorage.getItem("Role")!.toString());
+      this.SearchDetail = this.fb.group({
       FirstName: [null,Validators.required ],
       LastName: [null,Validators.required],
       LoanNumber: [null,Validators.required]
@@ -33,6 +34,7 @@ export class LoandashboardComponent implements OnInit {
    * @return response()
    */
   ngOnInit(): void {
+    
  
     this.getalldata();
    
@@ -68,7 +70,6 @@ export class LoandashboardComponent implements OnInit {
   } 
   Logout()
   {
-    alert();
    this.authenticationService.logout();
   }
  

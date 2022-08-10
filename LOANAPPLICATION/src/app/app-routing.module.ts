@@ -11,7 +11,7 @@ const routes: Routes = [
   {path:'Login', component:LoginComponent},
   {path:'Loan', component:LoanComponent,canActivate:[AuthGuard]},
   {path:'loanDetails',component:LoandashboardComponent,canActivate:[AuthGuard]},
-  { path: 'edit-loan/:Id/EditLoan', component: EditLoanComponent,canActivate:[AuthGuard] } 
+  { path: 'edit-loan/:Id/EditLoan', component: EditLoanComponent,canActivateChild:[AuthGuard] } 
 ];
 
 @NgModule({

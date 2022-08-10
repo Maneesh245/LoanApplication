@@ -55,16 +55,11 @@ export class LoginComponent implements OnInit {
              localStorage.setItem("Role", res.role);
              this.router.navigate(['/', 'loanDetails']);
              }
-             else
-             {
-              alert(res.errorMessage)
-                this.errorMessage =res.errorMessage;
-                this.showError = true;
-             }
+           
 
           },
           error: (err: HttpErrorResponse) => {
-            this.errorMessage = err.message;
+            this.errorMessage = "Invalid Authentication";;
             this.showError = true;
          
           }})

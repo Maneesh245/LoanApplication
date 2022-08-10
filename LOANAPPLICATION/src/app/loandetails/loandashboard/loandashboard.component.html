@@ -47,14 +47,14 @@
 <br/>
   <br/>
   <div class="container">
-    <table class="table table-bordered solid">
-      <tr>
+    <table class="table align-middle mb-0 bg-white table-bordered solid">
+        <thead class="bg-light">
         <th>Loan Number</th>
         <th>Name</th>
         <th>Loan Amount</th>
         <th>Property Address</th>
         <th width="220px" *ngIf="role === 'admin'">Action</th>
-      </tr>
+        </thead>
       <tr *ngFor="let loan of loandata">
         <td>{{ loan.id }}</td>
          <td>{{ loan.firstname }}</td> 

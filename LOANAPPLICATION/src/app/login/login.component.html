@@ -29,7 +29,7 @@
             <div *ngIf="showError" class="alert alert-danger form-outline mb-4" >
               {{errorMessage}}
           </div>
-            <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
+            <button type="submit"  [disabled]="!LoginDetails.valid" class="btn btn-primary btn-lg btn-block">Sign in</button>
   
   
       
